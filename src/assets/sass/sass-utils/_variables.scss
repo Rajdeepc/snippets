@@ -1,0 +1,19 @@
+/** LIGHT THEME */
+$background: black;
+$primary: magenta;
+$secondary: lawngreen;
+
+$light: #FFF;
+$dark: #000;
+
+/** DARK THEME */
+$background: white;
+$primary: magenta;
+$secondary: lawngreen;
+
+$light: #FFF;
+$dark: #000;
+html {
+  background-color: $background;
+  color: $dark; /** black on black with dark theme */
+} 
