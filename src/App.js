@@ -1,4 +1,7 @@
-import "./App.css";
+import React from 'react'
+import './App.css'
+import EditorContainer from './containers/EditorContainer';
+
 
 function App() {
   return (
@@ -9,7 +12,9 @@ function App() {
         <div className="grid-item grid-item-3">
           <div className="grid-item grid-item-header"></div>
           <div className="grid-item grid-item-left"></div>
-          <div className="grid-item grid-item-right"></div>
+          <div className="grid-item grid-item-right">
+            <EditorContainer />
+          </div>
         </div>
       </div>
     </div>

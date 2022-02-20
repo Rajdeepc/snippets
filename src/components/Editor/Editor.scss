@@ -1,0 +1,30 @@
+.pane.top-pane {
+  display: flex;
+  height: 50vh;
+  .editor-container {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-direction: column;
+    padding: 0.5rem;
+    &.collapsed{
+      flex-grow: 0;
+      &.CodeMirror-scroll{
+        position: absolute;
+      }
+    }
+    .editor-title {
+        display: flex;
+        justify-content: space-between;
+        background-color: black;
+        padding: 0.5rem;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+  }
+}
+
+.editor-pane{
+  background-color: white;
+}
