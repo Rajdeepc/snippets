@@ -1,43 +1,37 @@
 {
-  "name": "codeeditor",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "codemirror": "^5.65.1",
-    "react": "^17.0.2",
-    "react-codemirror2": "^7.2.1",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.0"
-  },
+  "name": "snippets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "Rajdeep Chandra",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "axios": "^0.19.2",
+    "bcrypt": "^3.0.8",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "config": "^3.3.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "joi-objectid": "^3.0.1",
+    "json-find": "^2.0.4",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.26.0",
+    "mongoose": "^5.2.15",
+    "shortid": "^2.2.15",
+    "xoauth2": "^1.2.0"
   },
   "devDependencies": {
-    "sass": "^1.49.8"
+    "nodemon": "^2.0.3"
+  },
+  "engines": {
+    "node": "10.16.0"
   }
 }
