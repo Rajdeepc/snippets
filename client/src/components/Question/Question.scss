@@ -1,0 +1,25 @@
+.question-container {
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  cursor: pointer;
+  &.active {
+    border: 1px solid #1b1e20;
+    border-radius: 0;
+    border-right: 0 none;
+    background: #1b1e20;
+  }
+  .item-logo {
+    flex: 0.1;
+  }
+  .item-desc {
+    flex: 0.8;
+    padding: 10px 0px;
+    p {
+      color: #4b4c4c;
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+}

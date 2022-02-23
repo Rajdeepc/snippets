@@ -1,16 +1,16 @@
 //Button
-.btn {
-  display: block;
-  color: $red;
-  border-color: transparent;
+// .btn {
+//   display: block;
+//   color: $red;
+//   border-color: transparent;
 
-  &:disabled,
-  &.disabled {
-    pointer-events: none;
-  }
-}
+//   &:disabled,
+//   &.disabled {
+//     pointer-events: none;
+//   }
+// }
 
-//Alternate Button
-.btn.alt {
-  color: $blue;
-}
+// //Alternate Button
+// .btn.alt {
+//   color: $blue;
+// }

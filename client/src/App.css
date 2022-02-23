@@ -15,20 +15,21 @@
 
 
 .grid-item.grid-item-3{
-  grid-template-areas: 'header header' 'sidebar content' 'sidebar content';
   grid-template-rows: 50px 1fr;
   display: grid;
   background: #121416;
 }
-
-
-.grid-item-header{
-  grid-area: header;
+.grid-item.grid-item-snippets {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
 }
-.grid-item-left {
-  grid-area: sidebar;
+.solutions-container {
+  color: #fff;
+  padding: 20px;
+  background: #1b1e20;
 }
-
-.grid-item-right {
-  grid-area: content;
+.creator-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
