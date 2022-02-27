@@ -2,10 +2,10 @@ import React from "react";
 import './Question.scss'
 
 
-export default function Question({ item, selectedIndex, handleClick }) {
+export default function Question({ item, selectedItemId, handleClick }) {
   return (
     <div
-      className={`question-container ${item._id === selectedIndex ? "active" : ""}`}
+      className={`question-container ${item._id === selectedItemId ? "active" : ""}`}
       onClick={() => handleClick(item)}
     >
       <div className="question-item item-logo"></div>

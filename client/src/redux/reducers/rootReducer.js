@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import QuestionsReducer from './QuestionsReducer';
+import ChannelsReducer from './ChannelsReducer';
 
 const rootReducer =  combineReducers({
-    QuestionsReducer,
+    ChannelsReducer,
 })
 
 export default rootReducer

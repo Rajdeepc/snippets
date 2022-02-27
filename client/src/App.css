@@ -6,7 +6,6 @@
 }
 
 .grid-item {
-  border: 1px solid;
 }
 
 .grid-item-1, .grid-item-2 {
@@ -32,4 +31,16 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.grid-item.grid-item-collection-list div {
+  padding: 6px 10px;
+}
+.grid-item-2{
+  display: grid;
+  color: #adb5bd;
+  grid-template-rows: 50px 2fr;
+}
+
+.channel-item.active {
+  background: #1b1e20;
 }

@@ -3,11 +3,11 @@ import Editor from "../components/Editor/Editor";
 import useLocalStorage from "../hooks/useLocalStorage";
 import Accordion from "../common-components/Accordian/Accordian";
 import { useSelector } from "react-redux";
-import { getSolutions } from "../store/selectors/";
+import { getSolutions } from "../redux/selectors";
 import { Modal, Button } from "react-bootstrap";
 
-export default function EditorContainer({ item = {} }) {
-  const getAllSolutions = useSelector(getSolutions);
+export default function EditorContainer({ selectedItem = {} }) {
+  const getAllSolutions = [];
   const [html, setHTML] = useLocalStorage("html", "");
   const [js, setJS] = useLocalStorage("js", "");
   const [css, setCSS] = useLocalStorage("css", "");
@@ -29,28 +29,30 @@ export default function EditorContainer({ item = {} }) {
 
   return (
     <>
-      <div className="editor-wrapper">
-        <h4>{item?.questionTitle}</h4>
-        <p>{item?.solutions?.length}</p>
-        <div className="solutions">
-          <div className="creator-panel">
-            <div className="creator-info">
-              <span>Alicia Johnson</span>
-              <span>Created on 22nd Jan 2020 14:23</span>
+      {selectedItem?.solutions?.map((item) => (
+        <div className="editor-wrapper">
+          <h4>{item?.questionTitle}</h4>
+          <p>{item?.solutions?.length}</p>
+          <div className="solutions">
+            <div className="creator-panel">
+              <div className="creator-info">
+                <span>{item.creator}</span>
+                <span>{item.date}</span>
+              </div>
+              <div className="share-icons">
+                <Button variant="primary" onClick={handleShow}>
+                  Launch demo modal
+                </Button>
+              </div>
             </div>
-            <div className="share-icons">
-              <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
-              </Button>
+            <div className="accordion">
+              {getAllSolutions?.[0]?.solutions?.map(({ title, content }, i) => (
+                <Accordion title={`Solution ${i + 1}`} />
+              ))}
             </div>
-          </div>
-          <div className="accordion">
-            {getAllSolutions?.[0]?.solutions?.map(({ title, content }, i) => (
-              <Accordion title={`Solution ${i + 1}`} />
-            ))}
           </div>
         </div>
-      </div>
+      ))}
       <Modal show={show} onHide={() => setShow(false)} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Modal title</Modal.Title>

@@ -1,7 +1,7 @@
 import Service from "../../utils/service";
 import { BASE_URL, API_ENDPOINTS } from "../../utils/environment";
 
-const getQuestionsByChannelID =
+const getSelectedChannelData =
   (channelId = "channel1") =>
   async (dispatch) => {
     const API_URL =
@@ -14,4 +14,16 @@ const getQuestionsByChannelID =
       .catch((e) => console.log(e));
   };
 
-export { getQuestionsByChannelID };
+const getChannelData = () => async (dispatch) => {
+  const API_URL = BASE_URL + API_ENDPOINTS.getAllChannelData;
+  Service.requestParams("GET", API_URL)
+    .then((res) => {
+      dispatch({
+        type: "GET_ALL_CHANNELS",
+        payload: res?.data,
+      });
+    })
+    .catch((e) => console.log(e));
+};
+
+export { getChannelData, getSelectedChannelData };

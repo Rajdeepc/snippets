@@ -1,29 +1,25 @@
 import React, { Suspense, useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getQuestionsByChannelID } from "../store/actions/getQuestions.action";
+import { getQuestionsByChannelID } from "../redux/actions/getQuestions.action";
 import Question from "../components/Question/Question";
 
 const EditorContainer = React.lazy(() => import("./EditorContainer")); // Lazy-loaded
 
-const Questions = ({ channelId }) => {
-  const getAllQuestions = useSelector(
-    (state) => state.QuestionsReducer.allQuestionsByChannelID
-  );
-  const dispatch = useDispatch();
+const Questions = ({ channelData=[] }) => {
 
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [selectedItem, setSelectedItem] = useState(getAllQuestions?.[0]);
+  
+  const [selectedItem, setSelectedItem] = useState(channelData?.[0]);
 
   useEffect(() => {
-    // call the getQuestions API with channel Id
-    dispatch(getQuestionsByChannelID());
-  }, []);
+    if(channelData?.length){
+      setSelectedItem(channelData?.[0])
+    }
+  }, [channelData]);
 
 
   const handleSelect = useCallback(
     (item) => {
       setSelectedItem(item);
-      setSelectedIndex(item._id);
     },
     []
   );
@@ -31,16 +27,16 @@ const Questions = ({ channelId }) => {
   return (
     <Suspense fallback={"Hi"}>
       <div className="questions-container">
-        {(getAllQuestions || []).map((item) => (
+        {(channelData || []).map((item) => (
           <Question
             item={item}
-            selectedIndex={selectedIndex}
+            selectedItemId={selectedItem?._id}
             handleClick={handleSelect}
           />
         ))}
       </div>
       <div className="solutions-container">
-        {selectedItem && <EditorContainer item={selectedItem} />}
+        {selectedItem && <EditorContainer selectedItem={selectedItem} />}
       </div>
     </Suspense>
   );

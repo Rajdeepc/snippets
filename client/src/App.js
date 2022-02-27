@@ -1,25 +1,28 @@
-import React from 'react'
-import './App.css'
-// import EditorContainer from './containers/EditorContainer';
-import QuestionsContainer from './containers/QuestionsContainer';
+import React, { Suspense, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "./App.css";
+import { getChannelData } from "./redux/actions/getQuestions.action";
+import { getAllChannelsData } from "./redux/selectors";
+
+
+const GridContainer = React.lazy(() => import("./containers/GridContainer")); // Lazy-loaded"./containers/GridContainer";
+
 
 
 function App() {
+  const dispatch = useDispatch();
+  const allChannels = useSelector(getAllChannelsData);
+
+
+  useEffect(() => {
+    dispatch(getChannelData());
+  }, []);
+
   return (
     <div className="App">
-      <div className="grid-container">
-        <div className="grid-item grid-item-1"></div>
-        <div className="grid-item grid-item-2"></div>
-        <div className="grid-item grid-item-3">
-          <div className="grid-item grid-item-header"></div>
-          <div className="grid-item grid-item-snippets">
-            <QuestionsContainer />
-          </div>
-          {/* <div className="grid-item grid-item-right">
-            <EditorContainer />
-          </div> */}
-        </div>
-      </div>
+      <Suspense fallback={<h1>"Loading....."</h1>}>
+        { allChannels && allChannels?.length && <GridContainer channelData={allChannels} /> }
+      </Suspense>
     </div>
   );
 }
