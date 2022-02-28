@@ -1,9 +1,7 @@
 import React, { Suspense, useCallback, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getQuestionsByChannelID } from "../redux/actions/getQuestions.action";
 import Question from "../components/Question/Question";
 
-const EditorContainer = React.lazy(() => import("./EditorContainer")); // Lazy-loaded
+const EditorContainer = React.lazy(() => import("./SolutionsContainer")); // Lazy-loaded
 
 const Questions = ({ channelData=[] }) => {
 
