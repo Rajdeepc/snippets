@@ -1,5 +1,5 @@
 import React, { Suspense, useCallback, useEffect, useState } from "react";
-import Question from "../components/Question/Question";
+import Question from "../components/QuestionItem/QuestionItem";
 
 const EditorContainer = React.lazy(() => import("./SolutionsContainer")); // Lazy-loaded
 

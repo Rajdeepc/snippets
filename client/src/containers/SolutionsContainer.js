@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Editor from "../components/Editor/Editor";
 import Accordion from "../common-components/Accordian/Accordian";
 import { Modal, Button } from "react-bootstrap";
-import EditorComponent from "../components/Editor/EditorComponent";
+import EditorComponent from "../components/JSEditor/JSEditorParentComponent";
 
 export default function EditorContainer({ selectedItem = {} }) {
   const getAllSolutions = [];
@@ -10,8 +9,6 @@ export default function EditorContainer({ selectedItem = {} }) {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
-
-  
 
   return (
     <>
@@ -46,7 +43,7 @@ export default function EditorContainer({ selectedItem = {} }) {
 
         <Modal.Body>
           <>
-                <EditorComponent/>
+            <EditorComponent />
           </>
         </Modal.Body>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import Editor from './Editor';
+import Editor from './JSEditor';
 
 
 
@@ -25,7 +25,7 @@ export default function EditorComponent() {
   return (
     <div>
       <div className="pane top-pane">
-        <Editor
+        {/* <Editor
           language="xml"
           displayName="html"
           value={html}
@@ -36,7 +36,7 @@ export default function EditorComponent() {
           displayName="css"
           value={css}
           onChange={setCSS}
-        />
+        /> */}
         <Editor
           language="javascript"
           displayName="javascript"

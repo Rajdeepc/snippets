@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Channel from "../components/Channel/Channel";
 import { getSelectedChannelData } from "../redux/actions/getQuestions.action";
 import { getChannelDataById } from "../redux/selectors";
 import QuestionsContainer from "../containers/QuestionsContainer";
 import { Modal, Input, Button, Dropdown } from "react-bootstrap";
-import CreateCollection from "../components/CreateCollection/CreateCollection";
+import CreateCollectionModal from "../components/CreateCollectionModal/CreateCollectionModal";
+import { getAllChannelsData } from "../redux/selectors";
+
+
 
 export default function GridContainer({ channelData = [] }) {
   const dispatch = useDispatch();
+  const allChannels = useSelector(getAllChannelsData);
+
   const getSelectedChannelDataById = useSelector(getChannelDataById);
 
   const [selectedChannel, setSelectedChannel] = useState(channelData?.[0]);
@@ -22,23 +27,32 @@ export default function GridContainer({ channelData = [] }) {
     if (selectedChannel && selectedChannel?.channelId) {
       dispatch(getSelectedChannelData(selectedChannel?.channelId));
     }
-  }, [selectedChannel]);
+  }, [dispatch, selectedChannel]);
 
-  const addCollection = () => {
+  // useEffect(() => {
+  //   if (show) {
+  //     // call the database to get list of exisitng channels
+  //   }
+  // }, [show]);
+
+  const addCollection = useCallback(() => {
     setShow(true);
-  };
+  }, []);
 
-  const hideModal = () => {
+  const hideModal = useCallback(() => {
     setShow(false);
-  };
+  }, []);
 
   return (
     <div className="grid-container">
       <div className="grid-item grid-item-1"></div>
       <div className="grid-item grid-item-2">
-        <div className="grid-item grid-item-collection-header">
+        <div
+          className="grid-item grid-item-collection-header"
+          onClick={addCollection}
+        >
           <span>Create Collection</span>
-          <span onClick={addCollection}>+</span>
+          <span>+</span>
         </div>
         <div className="grid-item grid-item-collection-list">
           {(channelData || []).map((item) => (
@@ -60,16 +74,16 @@ export default function GridContainer({ channelData = [] }) {
       </div>
       <Modal show={show} onHide={hideModal} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title>Create A New Snippet</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <CreateCollection />
+          <CreateCollectionModal allChannels={allChannels} onClose={hideModal}/>
         </Modal.Body>
-        <Modal.Footer>
+        {/* <Modal.Footer>
           <Button variant="secondary">Close</Button>
           <Button variant="primary">Save changes</Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </div>
   );

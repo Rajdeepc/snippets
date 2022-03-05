@@ -44,3 +44,7 @@
 .channel-item.active {
   background: #1b1e20;
 }
+.grid-item.grid-item-collection-header {
+  display: flex;
+  align-items: center;
+}
