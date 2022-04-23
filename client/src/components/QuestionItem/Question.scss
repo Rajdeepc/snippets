@@ -1,13 +1,14 @@
+
+
 .question-container {
   display: flex;
   flex-direction: row;
-  color: #fff;
   cursor: pointer;
   &.active {
-    border: 1px solid #1b1e20;
+    border: 1px solid #eceff2;
     border-radius: 0;
     border-right: 0 none;
-    background: #1b1e20;
+    background: #eceff2;
   }
   .item-logo {
     flex: 0.1;

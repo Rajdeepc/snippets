@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const SavedApiResponse = require("../models/questionModel");
+const SavedApiResponse = require("../models/addTaskModel");
 
 router.get("/:channelId", async (req, res) => {
   try {

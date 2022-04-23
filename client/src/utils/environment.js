@@ -48,7 +48,8 @@ const BASE_URL = getEnvironMentConfig(process.env.NODE_ENV || DEFAULT_ENV);
 
 const API_ENDPOINTS = {
   getChannelQuestions: "/getChannelQuestions",
-  getAllChannelData:"/getAllChannelData"
+  getAllChannelData:"/getAllChannelData",
+  addTask :"/addTask"
 };
 
 export { BASE_URL, API_ENDPOINTS };

@@ -11,6 +11,7 @@ const cors = require("cors");
 // routes
 const getChannelQuestions = require("./routes/getChannelQuestions");
 const getAllChannelData = require("./routes/getAllChannelData");
+const addTask = require("./routes/addTask");
 
 // middlewares
 app.use(cors());
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/getChannelQuestions", getChannelQuestions);
 app.use("/getAllChannelData", getAllChannelData);
+app.use("/addTask", addTask);
 
 // Serve static files assets on heroku
 app.use(express.static(path.join(__dirname, "client/build")));

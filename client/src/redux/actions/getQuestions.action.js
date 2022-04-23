@@ -26,4 +26,18 @@ const getChannelData = () => async (dispatch) => {
     .catch((e) => console.log(e));
 };
 
-export { getChannelData, getSelectedChannelData };
+
+
+const addTask = (payload) => async (dispatch) => {
+  const API_URL = BASE_URL + API_ENDPOINTS.addTask;
+  Service.requestParams("POST", API_URL, payload)
+    .then((res) => {
+      dispatch({
+        type: "POST_NEW_TASK",
+        payload: res?.data,
+      });
+    })
+    .catch((e) => console.log(e));
+}
+
+export { getChannelData, getSelectedChannelData,addTask };

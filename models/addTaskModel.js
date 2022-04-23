@@ -5,27 +5,23 @@ const mongoose = require("mongoose");
  */
 
 const schema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: true,
-  },
   channelId: {
     type: String,
     required: true,
   },
-  questionTitle: {
+  taskTitle: {
     type: String,
   },
-  questionDescription: {
+  taskDetails: {
     type: String,
-    required: false,
+    required: true,
   },
   solutions: {
     type: Array,
   },
 });
 
-const SavedApiResponse = mongoose.model('Questions', schema);
+const AddTaskModel = mongoose.model('Questions', schema);
 
 
-module.exports = SavedApiResponse;
+module.exports = AddTaskModel;

@@ -45,14 +45,9 @@ export default function GridContainer({ channelData = [] }) {
 
   return (
     <div className="grid-container">
-      <div className="grid-item grid-item-1"></div>
-      <div className="grid-item grid-item-2">
-        <div
-          className="grid-item grid-item-collection-header"
-          onClick={addCollection}
-        >
-          <span>Create Collection</span>
-          <span>+</span>
+      <div className="grid-item grid-item-1">
+      <div className="grid-item grid-item-header">
+        <h4>Active Sprints <button className="btn btn-primary"><span className="add-icon">+</span></button></h4>
         </div>
         <div className="grid-item grid-item-collection-list">
           {(channelData || []).map((item) => (
@@ -64,8 +59,12 @@ export default function GridContainer({ channelData = [] }) {
           ))}
         </div>
       </div>
-      <div className="grid-item grid-item-3">
-        <div className="grid-item grid-item-header"></div>
+      <div className="grid-item grid-item-2">
+        <div className="grid-item grid-item-header">
+        <button className="btn btn-primary" onClick={addCollection}>
+          Add Sprint Task +
+        </button>
+        </div>
         <div className="grid-item grid-item-snippets">
           {getSelectedChannelDataById && getSelectedChannelDataById.length && (
             <QuestionsContainer channelData={getSelectedChannelDataById} />
@@ -74,11 +73,11 @@ export default function GridContainer({ channelData = [] }) {
       </div>
       <Modal show={show} onHide={hideModal} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Create A New Snippet</Modal.Title>
+          <Modal.Title>Create A New Task</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <CreateCollectionModal allChannels={allChannels} onClose={hideModal}/>
+          <CreateCollectionModal selectedChannel={selectedChannel?.channelId} onClose={hideModal}/>
         </Modal.Body>
         {/* <Modal.Footer>
           <Button variant="secondary">Close</Button>
